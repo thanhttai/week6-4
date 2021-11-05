@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Alert, Card, Col, Container, Row } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
-
 import { useHistory } from "react-router-dom";
 import PaginationBar from "../components/PaginationBar";
 import SearchForm from "../components/SearchForm";
+import { useDispatch, useSelector } from "react-redux";
+import bookActions from "../redux/actions/books.actions";
 import api from "../apiService";
 
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
 const HomePage = () => {
-  const [books, setBooks] = useState([]);
+  // const [books, setBooks] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const totalPage = 10;
   const limit = 10;
@@ -34,24 +35,23 @@ const HomePage = () => {
     e.preventDefault();
     setQuery(searchInput);
   };
-
+  
+  const dispatch = useDispatch();
+  const books = useSelector(state=> state.books.books)
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        let url = `/books?_page=${pageNum}&_limit=${limit}`;
-        if (query) url += `&q=${query}`;
-        const res = await api.get(url);
-        console.log(res);
-        setBooks(res.data);
-        setErrorMessage("");
-      } catch (error) {
-        setErrorMessage(error.message);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [pageNum, limit, query]);
+    // const fetchData = async () => {
+    //   setLoading(true);
+    //   try {
+    //     setBooks(res.data); //save data to books' state
+    //     setErrorMessage("");
+    //   } catch (error) {
+    //     setErrorMessage(error.message);
+    //   }
+    //   setLoading(false);
+    // };
+    // fetchData();
+    dispatch(bookActions.getAllBooks({pageNum, limit, query}));
+  }, [dispatch, pageNum, limit, query]);
 
   return (
     <Container>

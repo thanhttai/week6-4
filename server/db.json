@@ -32,6 +32,28 @@
       "title": "Things Fall Apart",
       "year": 1958,
       "id": "8F627C92410"
+    },
+    {
+      "author": "Honoré de Balzac",
+      "country": "France",
+      "imageLink": "images/le-pere-goriot.jpg",
+      "language": "French",
+      "link": "https://en.wikipedia.org/wiki/Le_P%C3%A8re_Goriot\n",
+      "pages": 443,
+      "title": "Le Père Goriot",
+      "year": 1835,
+      "id": "484CAB01CF8"
+    },
+    {
+      "author": "Unknown",
+      "country": "Sumer and Akkadian Empire",
+      "imageLink": "images/the-epic-of-gilgamesh.jpg",
+      "language": "Akkadian",
+      "link": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh\n",
+      "pages": 160,
+      "title": "The Epic Of Gilgamesh",
+      "year": -1700,
+      "id": "4F45963BC33"
     }
   ],
   "books": [
